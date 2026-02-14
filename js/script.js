@@ -11,8 +11,8 @@ const story = [
   {type: 'image', src: 'IMG_8903.jpeg', caption: 'That trip photo'},
   {type: 'text', html: `<p>As we head toward our sixth year together, I want you to know this: I choose you every day. Not because you are perfect, but because the life we build together is more beautiful than anything I ever imagined.</p>`},
   {type: 'image', src: 'IMG_8911.jpeg', caption: 'Cozy memories'},
-  {type: 'image', src: 'c8032ae0-ce1d-42bd-b11f-287af80773e5.jpeg', caption: 'Another favorite moment'},
   {type: 'text', html: `<p>Happy Valentine's Day. Here's to the next chapter, to more late-night jokes, to more quiet mornings, and to a forever that starts anew with every small, perfect day we share.</p>`}
+  {type: 'image', src: 'c8032ae0-ce1d-42bd-b11f-287af80773e5.jpeg', caption: 'Another favorite moment'},
 ];
 
 const storyContainer = document.getElementById('story-content');
