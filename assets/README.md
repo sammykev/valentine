@@ -11,11 +11,11 @@ Steps:
 1. Create folders: `assets/images/` and `assets/videos/`.
 2. Add your pictures and videos into those folders.
 3. Edit the `story` array in `js/script.js` to insert your paragraphs and media in the order you want them to appear.
-4. Serve the folder with a static server and open `valentine.html` in your browser.
+4. Serve the folder with a static server and open `index.html` in your browser.
 
 Quick local preview command:
 ```
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000/valentine.html` after starting the server.
+Open `http://localhost:8000/index.html` after starting the server.
