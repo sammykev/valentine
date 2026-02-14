@@ -57,8 +57,6 @@ const story = [
       <h2>My Promise to You</h2>
       <p>Thanks for being my rock, my fave notification, and my ride-or-die since that airtime save. Here's to the past scrolls, the present stories, and dropping the mic on an even crazier future.</p>
       <p><strong>Yours always. 💯</strong></p>
-      <hr>
-      <p style="text-align: center; font-style: italic;"><em>Valentine's Day 2026<br>From the boy at 17 to the man who chooses you every day</em></p>
     `
   },
   {
