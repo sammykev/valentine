@@ -1,13 +1,16 @@
+.root-fallback{}
 :root{
-  --bg:#fff7fb;
-  --accent:#e75480;
-  --muted:#6b6b6b;
-  --max-width:1000px;
+  --bg-dark-1: #050612; /* deep navy */
+  --bg-dark-2: #08101b; /* near black blue */
+  --accent:#ffd27a; /* soft gold instead of pink */
+  --muted:rgba(220,230,255,0.65);
+  --text:#e6f0ff;
+  --page-max-width:1000px;
 }
 *{box-sizing:border-box}
-body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:#222}
-.page{max-width:var(--max-width); margin:28px auto; padding:20px}
-.hero{background:linear-gradient(135deg,#fff 0%,#ffeef6 100%); border-radius:12px; padding:28px; text-align:center; position:relative}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:linear-gradient(180deg,var(--bg-dark-1) 0%, var(--bg-dark-2) 100%); color:var(--text); min-height:100vh;}
+.page{max-width:var(--page-max-width); margin:28px auto; padding:20px; position:relative; z-index:2}
+.hero{background:linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.02) 100%); border-radius:12px; padding:28px; text-align:center; position:relative; box-shadow:0 8px 30px rgba(0,0,0,0.6);}
 .hero h1{margin:0 0 8px; font-size:28px}
 .hero .sub{margin:0 0 12px; color:var(--muted)}
 .heart{font-size:48px; animation:beat 1s infinite ease-in-out; color:var(--accent); margin-top:8px}
@@ -16,13 +19,13 @@ body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica
 .timeline{margin-top:28px}
 .timeline h2{margin:0 0 12px}
 .timeline-items{display:flex; gap:12px; flex-wrap:wrap}
-.tl-item{background:#fff; border-radius:10px; padding:12px; flex:1 1 150px; min-width:150px; box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+.tl-item{background:rgba(255,255,255,0.02); border-radius:10px; padding:12px; flex:1 1 150px; min-width:150px; box-shadow:0 6px 20px rgba(2,6,12,0.6)}
 .tl-item h3{margin:0 0 6px; font-size:16px}
 .tl-item p{margin:0; color:var(--muted); font-size:14px}
 
 .gallery{margin-top:28px}
 .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px}
-.thumb{background:#fff; border-radius:10px; overflow:hidden; position:relative; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+.thumb{background:rgba(255,255,255,0.02); border-radius:10px; overflow:hidden; position:relative; cursor:pointer; box-shadow:0 8px 24px rgba(0,0,0,0.6)}
 .thumb img{width:100%; height:160px; object-fit:cover; display:block}
 .caption{padding:8px; font-size:13px; color:var(--muted)}
 
@@ -37,14 +40,52 @@ body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica
 .media video{max-width:100%; border-radius:8px}
 .media figcaption{color:var(--muted); margin-top:8px; font-size:13px}
 
-.lightbox{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.7); z-index:1000; padding:24px}
+.lightbox{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.75); z-index:1000; padding:24px}
 .lightbox.hidden{display:none}
 .lightbox img{max-width:90%; max-height:70vh; border-radius:8px; display:block}
-.lightbox #close{position:absolute; top:18px; right:18px; background:transparent; border:0; color:#fff; font-size:22px}
-.lightbox p{color:#fff; margin-top:12px; text-align:center}
+.lightbox #close{position:absolute; top:18px; right:18px; background:transparent; border:0; color:var(--text); font-size:22px}
 .lb-controls{position:absolute; left:18px; right:18px; bottom:28px; display:flex; justify-content:space-between}
-.lb-controls button{background:rgba(255,255,255,0.15); border:0; color:#fff; font-size:20px; padding:10px 14px; border-radius:6px}
+.lb-controls button{background:rgba(255,255,255,0.06); border:0; color:var(--text); font-size:20px; padding:10px 14px; border-radius:6px}
 
 .footer{text-align:center; color:var(--muted); margin-top:24px}
 
+.story{margin-top:28px}
+.story h2{margin:0 0 12px}
+.story-content{background:rgba(255,255,255,0.03); padding:22px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.5)}
+.speech{font-size:18px; line-height:1.7; color:var(--text); margin-bottom:18px}
+.speech p{margin:0}
+.media{margin:18px 0; text-align:center}
+.media img{max-width:100%; height:auto; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.6); cursor:pointer}
+.media video{max-width:100%; border-radius:8px}
+.media figcaption{color:var(--muted); margin-top:8px; font-size:13px}
+
 @media (max-width:520px){.hero h1{font-size:20px}.thumb img{height:120px}}
+
+/* Starry background layers */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.9) 50%, transparent 51%),
+    radial-gradient(1px 1px at 20% 80%, rgba(255,255,255,0.85) 50%, transparent 51%),
+    radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.8) 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.9) 50%, transparent 51%),
+    radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.85) 50%, transparent 51%),
+    radial-gradient(0.8px 0.8px at 50% 50%, rgba(255,255,255,0.7) 50%, transparent 51%);
+  background-size: 200px 200px, 300px 300px, 240px 240px, 360px 360px, 420px 420px, 120px 120px;
+  opacity:0.9;
+  pointer-events:none;
+  animation: twinkle 6s linear infinite;
+}
+
+@keyframes twinkle{
+  0%{opacity:0.85}
+  50%{opacity:0.6}
+  100%{opacity:0.85}
+}
+
+/* make sure main content sits above stars */
+.page, .hero, .story-content { position: relative; z-index:2 }
+
