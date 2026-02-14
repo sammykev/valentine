@@ -3,16 +3,69 @@
 // Put media files in `assets/images/` or `assets/videos/` and reference those paths.
 
 const story = [
-  {type: 'text', html: `<p>My love, when I think back to October 2020 — the way you laughed at the smallest things, the way your hand fit mine — I remember thinking how lucky I was. From that first moment, you made the ordinary feel like the most important thing in the world.</p>`},
-  {type: 'image', src: 'IMG_8993.jpeg', caption: 'The day we started — October 2020'},
-  {type: 'text', html: `<p>We grew together through quiet nights and big changes. You were patient when things were hard, and you celebrated each small victory as if it were your own. You taught me how to be kinder, how to listen, and how to find joy in the simple.</p>`},
-  {type: 'video', src: 'IMG_7351.mov', caption: 'A favorite video moment'},
-  {type: 'text', html: `<p>There are memories I keep on repeat in my head: that road trip where we sang off-key until we cried, the late-night talks that turned into plans, and the quiet mornings where our coffee tasted like home. Thank you for being my person through them all.</p>`},
-  {type: 'image', src: 'IMG_8903.jpeg', caption: 'That trip photo'},
-  {type: 'text', html: `<p>As we head toward our sixth year together, I want you to know this: I choose you every day. Not because you are perfect, but because the life we build together is more beautiful than anything I ever imagined.</p>`},
-  {type: 'image', src: 'IMG_8911.jpeg', caption: 'Cozy memories'},
-  {type: 'text', html: `<p>Happy Valentine's Day. Here's to the next chapter, to more late-night jokes, to more quiet mornings, and to a forever that starts anew with every small, perfect day we share.</p>`}
-  {type: 'image', src: 'c8032ae0-ce1d-42bd-b11f-287af80773e5.jpeg', caption: 'Another favorite moment'},
+  {
+    type: 'text',
+    html: `
+      <h1>Happy Valentine's Day, Babe</h1>
+      <p>I was scrolling through old chats to write this, and honestly, it hit me—there's no emoji or thread that can capture everything we've built. Our vibe kicked off back when I was 17 and you were 16, straight out of high school in November 2019. I was that guy sliding into your DMs (or more like begging) for airtime, and you still made it happen—even with that brutal Lagos sun roasting everything. Lowkey, that was the moment I knew you were different, no cap.</p>
+    `
+  },
+  {
+    type: 'image',
+    src: 'IMG_8993.jpeg',
+    caption: 'The day we started — November 2019 airtime moment'
+  },
+  {
+    type: 'text',
+    html: `
+      <h2>Then vs. Now: What I Didn't Know</h2>
+      <p>Back then, I thought love was just vibes—late-night calls, memes, and endless "what ifs." But fast-forward to that year-and-three-months stretch where we couldn't link up? Straight ghosted by life, no face-to-face, just voice notes and "you up?" texts holding us down. We had our glitches—petty arguments over signal drops, overthinking "read" receipts—but we powered through. That's when I got it: real love isn't just the highlight reel; it's grinding through the lag, choosing each other when the WiFi's weak and the distance hits different.</p>
+    `
+  },
+  {
+    type: 'video',
+    src: 'IMG_7351.mov',
+    caption: 'A favorite moment from our journey'
+  },
+  {
+    type: 'text',
+    html: `
+      <h2>The Milestone That Changed Everything</h2>
+      <p>Proudest flex? Surviving that phase and leveling up. That first reunion after all those months? Felt like unmuting the best playlist—everything snapped into focus. We've stacked wins since: turning casual hangs into real plans, hyping each other's glow-ups, and turning "someday" goals into active Pinterest boards. You've been my day-one, my go-to in the group chat of life.</p>
+    `
+  },
+  {
+    type: 'image',
+    src: 'IMG_8903.jpeg',
+    caption: 'Our reunion vibes'
+  },
+  {
+    type: 'text',
+    html: `
+      <h2>Where We're Heading</h2>
+      <p>We're not at the end credits yet—still chasing that coupled-up life where we're not counting days apart, building our spot, traveling on vibes, and making content out of the everyday. But looking at our story? We're trending upward, no doubt. Couldn't imagine this timeline with anyone else.</p>
+    `
+  },
+  {
+    type: 'image',
+    src: 'IMG_8911.jpeg',
+    caption: 'Future goals mood'
+  },
+  {
+    type: 'text',
+    html: `
+      <h2>My Promise to You</h2>
+      <p>Thanks for being my rock, my fave notification, and my ride-or-die since that airtime save. Here's to the past scrolls, the present stories, and dropping the mic on an even crazier future.</p>
+      <p><strong>Yours always. 💯</strong></p>
+      <hr>
+      <p style="text-align: center; font-style: italic;"><em>Valentine's Day 2026<br>From the boy at 17 to the man who chooses you every day</em></p>
+    `
+  },
+  {
+    type: 'image',
+    src: 'c8032ae0-ce1d-42bd-b11f-287af80773e5.jpeg',
+    caption: 'Forever us'
+  }
 ];
 
 const storyContainer = document.getElementById('story-content');
@@ -25,24 +78,24 @@ const nextBtn = document.getElementById('next');
 let mediaIndices = []; // indices in story array pointing to media items
 let currentMediaIdx = 0; // index inside mediaIndices
 
-function buildStory(){
+function buildStory() {
   storyContainer.innerHTML = '';
   mediaIndices = [];
-  story.forEach((block, i) =>{
-    if(block.type === 'text'){
+  story.forEach((block, i) => {
+    if (block.type === 'text') {
       const div = document.createElement('div');
       div.className = 'speech';
       div.innerHTML = block.html;
       storyContainer.appendChild(div);
-    } else if(block.type === 'image' || block.type === 'video'){
+    } else if (block.type === 'image' || block.type === 'video') {
       const figure = document.createElement('figure');
       figure.className = 'media';
-      if(block.type === 'image'){
+      if (block.type === 'image') {
         const img = document.createElement('img');
         img.src = block.src;
         img.alt = block.caption || '';
         img.loading = 'lazy';
-        img.addEventListener('click', ()=> openLightboxFor(i));
+        img.addEventListener('click', () => openLightboxFor(i));
         figure.appendChild(img);
       } else {
         const vid = document.createElement('video');
@@ -58,30 +111,30 @@ function buildStory(){
   });
 }
 
-function openLightboxFor(storyIndex){
+function openLightboxFor(storyIndex) {
   currentMediaIdx = mediaIndices.indexOf(storyIndex);
-  if(currentMediaIdx === -1) return;
+  if (currentMediaIdx === -1) return;
   const block = story[storyIndex];
-  if(block.type === 'image'){
+  if (block.type === 'image') {
     lbImg.src = block.src;
     lightbox.classList.remove('hidden');
   }
 }
 
-function closeLightbox(){
+function closeLightbox() {
   lightbox.classList.add('hidden');
   lbImg.src = '';
 }
 
-function showPrev(){
-  if(mediaIndices.length === 0) return;
+function showPrev() {
+  if (mediaIndices.length === 0) return;
   currentMediaIdx = (currentMediaIdx - 1 + mediaIndices.length) % mediaIndices.length;
   const idx = mediaIndices[currentMediaIdx];
   openLightboxFor(idx);
 }
 
-function showNext(){
-  if(mediaIndices.length === 0) return;
+function showNext() {
+  if (mediaIndices.length === 0) return;
   currentMediaIdx = (currentMediaIdx + 1) % mediaIndices.length;
   const idx = mediaIndices[currentMediaIdx];
   openLightboxFor(idx);
@@ -90,7 +143,8 @@ function showNext(){
 closeBtn.addEventListener('click', closeLightbox);
 prevBtn.addEventListener('click', showPrev);
 nextBtn.addEventListener('click', showNext);
-lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLightbox(); });
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
 
 buildStory();
-
