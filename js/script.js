@@ -146,3 +146,43 @@ lightbox.addEventListener('click', (e) => {
 });
 
 buildStory();
+
+// Apple Music embed helper
+const appleInput = document.getElementById('apple-url');
+const appleBtn = document.getElementById('apple-apply');
+const appleClear = document.getElementById('apple-clear');
+const appleContainer = document.getElementById('apple-embed');
+const appleOpen = document.getElementById('apple-open');
+const DEFAULT_APPLE_LINK = 'https://music.apple.com/ng/playlist/pl.u-JPAZEGNTLo66RJl';
+
+function toEmbedUrl(url){
+  if(!url) return '';
+  // convert music.apple.com/... to embed.music.apple.com/...
+  return url.replace(/^https?:\/\/(music\.apple\.com)/i, 'https://embed.music.apple.com');
+}
+
+function loadAppleFrom(url){
+  const embed = toEmbedUrl(url.trim());
+  if(!embed) return;
+  appleContainer.innerHTML = `<iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="120" style="width:100%;max-width:660px;overflow:hidden;border-radius:8px" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="${embed}"></iframe>`;
+  localStorage.setItem('valentine-apple-url', url);
+  if(appleOpen) appleOpen.href = url.trim();
+}
+
+appleBtn.addEventListener('click', ()=>{
+  loadAppleFrom(appleInput.value);
+});
+
+appleClear.addEventListener('click', ()=>{
+  appleContainer.innerHTML = '';
+  appleInput.value = '';
+  localStorage.removeItem('valentine-apple-url');
+  if(appleOpen) appleOpen.href = DEFAULT_APPLE_LINK;
+});
+
+// load saved
+window.addEventListener('load', ()=>{
+  const saved = localStorage.getItem('valentine-apple-url');
+  if(saved){ appleInput.value = saved; loadAppleFrom(saved); }
+  else if(appleOpen) appleOpen.href = DEFAULT_APPLE_LINK;
+});
